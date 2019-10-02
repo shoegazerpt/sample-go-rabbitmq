@@ -21,7 +21,16 @@ spec:
         command:
           - receive
         args:
-          - 'amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672'
+          - 'amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672' #'amqp://user:PASSWORD@52.148.255.45:5672' #'amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672'
+        resources:
+          requests:
+            memory: "0.5Gi"
+            cpu: "0.5"
+      # tolerations:
+      # - key: virtual-kubelet.io/provider
+      #   operator: Exists
+      # - key: azure.com/aci
+      #   effect: NoSchedule
 ---
 apiVersion: keda.k8s.io/v1alpha1
 kind: ScaledObject
@@ -35,7 +44,7 @@ spec:
     deploymentName: rabbitmq-consumer
   pollingInterval: 5   # Optional. Default: 30 seconds
   cooldownPeriod: 30   # Optional. Default: 300 seconds
-  maxReplicaCount: 30  # Optional. Default: 100
+  maxReplicaCount: 5 #30  # Optional. Default: 100
   triggers:
   - type: rabbitmq
     metadata:

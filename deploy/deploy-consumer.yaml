@@ -24,8 +24,8 @@ spec:
           - 'amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672' #'amqp://user:PASSWORD@52.148.255.45:5672' #'amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672'
         resources:
           requests:
-            memory: "0.5Gi"
-            cpu: "0.5"
+            memory: "1Gi"
+            cpu: "1"
       # tolerations:
       # - key: virtual-kubelet.io/provider
       #   operator: Exists

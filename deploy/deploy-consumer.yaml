@@ -28,6 +28,7 @@ spec:
       #   effect: NoSchedule
       containers:
       - name: rabbitmq-consumer
+        #image: rifiel.azurecr.io/rabbitmq-client:dev
         image: jeffhollan/rabbitmq-client:dev
         imagePullPolicy: Always
         command:
@@ -39,8 +40,8 @@ spec:
             name: rabbitmq-consumer
         resources:
           requests:
-            memory: "1Gi"
-            cpu: "1"
+            memory: "2Gi"
+            cpu: "0.1"
 ---
 apiVersion: keda.k8s.io/v1alpha1
 kind: ScaledObject

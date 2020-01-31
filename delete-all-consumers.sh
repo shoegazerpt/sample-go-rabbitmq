@@ -1,0 +1,1 @@
+kubectl get pods --no-headers=true | awk '/rabbitmq-consu/{print $1}' | xargs kubectl delete pod --grace-period=0 --force

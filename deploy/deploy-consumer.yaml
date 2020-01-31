@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: rabbitmq-consumer
+  namespace: default
 data:
   RabbitMqHost: YW1xcDovL3VzZXI6UEFTU1dPUkRAcmFiYml0bXEuZGVmYXVsdC5zdmMuY2x1c3Rlci5sb2NhbDo1Njcy
 ---
@@ -28,7 +29,7 @@ spec:
       #   effect: NoSchedule
       containers:
       - name: rabbitmq-consumer
-        #image: rifiel.azurecr.io/rabbitmq-client:dev
+        # image: rifiel.azurecr.io/rabbitmq-client:dev
         image: jeffhollan/rabbitmq-client:dev
         imagePullPolicy: Always
         command:

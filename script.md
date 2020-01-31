@@ -1,11 +1,13 @@
 # install KEDA
-helm repo add kedacore https://kedacore.azureedge.net/helm
+helm repo add kedacore https://kedacore.github.io/charts
 helm repo update
-helm install kedacore/keda-edge --devel --set logLevel=debug --namespace keda --name keda
+kubectl create ns keda
+helm install keda kedacore/keda --namespace keda
 
 # setup namespace
-# kubectl create ns kedarabbit
+kubectl create ns kedarabbit
 
 # install rabbitmq
-# helm install --name rabbitmq --set rabbitmq.username=user,rabbitmq.password=PASSWORD stable/rabbitmq --namespace kedarabbit
-helm install --name rabbitmq --set rabbitmq.username=user,rabbitmq.password=PASSWORD stable/rabbitmq
+helm install rabbitmq --set rabbitmq.username=user,rabbitmq.password=PASSWORD stable/rabbitmq --namespace kedarabbit
+
+# takes about 2 mins to get persistent storage bound to rabbitmq

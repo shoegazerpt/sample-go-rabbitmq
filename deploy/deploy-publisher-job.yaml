@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: rabbitmq-publish
-  namespace: default
 spec:
   template:
     spec:
@@ -13,4 +12,3 @@ spec:
         command: ["send",  "amqp://user:PASSWORD@rabbitmq.default.svc.cluster.local:5672", "300"]
       restartPolicy: Never
   backoffLimit: 4
-

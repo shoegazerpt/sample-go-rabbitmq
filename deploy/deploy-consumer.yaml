@@ -21,11 +21,11 @@ spec:
       labels:
         app: rabbitmq-consumer
     spec:
-      tolerations:
-        - key: virtual-kubelet.io/provider
-          operator: Exists
-        - key: azure.com/aci
-          effect: NoSchedule
+      # tolerations:
+      #   - key: virtual-kubelet.io/provider
+      #     operator: Exists
+      #   - key: azure.com/aci
+      #     effect: NoSchedule
       containers:
         - name: rabbitmq-consumer
           image: jeffhollan/rabbitmq-client:dev
